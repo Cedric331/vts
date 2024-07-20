@@ -2,63 +2,73 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\MediaPlanRequest;
+use App\Http\Resources\MediaPlan\MediaPlanCollection;
+use App\Http\Resources\MediaPlan\MediaPlanResource;
+use App\Models\MediaPlan;
 
 class MediaPlanController extends Controller
 {
+
     /**
-     * Display a listing of the resource.
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
-    public function index()
+    public function index(): \Illuminate\Http\Resources\Json\AnonymousResourceCollection
     {
-        //
+        return MediaPlanCollection::collection(MediaPlan::all());
     }
 
     /**
-     * Show the form for creating a new resource.
+     * @param MediaPlanRequest $request
+     * @return \Illuminate\Http\Response|MediaPlanResource
      */
-    public function create()
+    public function store(MediaPlanRequest $request): \Illuminate\Http\Response|MediaPlanResource
     {
-        //
+        $validatedData = $request->validated();
+
+        $mediaPlan = MediaPlan::create($validatedData);
+
+        return new MediaPlanResource($mediaPlan);
     }
 
     /**
-     * Store a newly created resource in storage.
+     * @param MediaPlan $mediaPlan
+     * @return MediaPlanResource
      */
-    public function store(Request $request)
+    public function show(MediaPlan $mediaPlan): MediaPlanResource
     {
-        //
+        return new MediaPlanResource($mediaPlan);
     }
 
     /**
-     * Display the specified resource.
+     * @param MediaPlanRequest $request
+     * @param MediaPlan $mediaPlan
+     * @return \Illuminate\Http\Response|MediaPlanResource
      */
-    public function show(string $id)
+    public function update(MediaPlanRequest $request, MediaPlan $mediaPlan): \Illuminate\Http\Response|MediaPlanResource
     {
-        //
+        $validatedData = $request->validated();
+
+        $mediaPlan->update($validatedData);
+
+        return new MediaPlanResource($mediaPlan);
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * @param MediaPlan $mediaPlan
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function edit(string $id)
+    public function destroy(MediaPlan $mediaPlan): \Illuminate\Http\JsonResponse
     {
-        //
-    }
+        $deleted = $mediaPlan->delete();
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        if ($deleted) {
+            return response()->json([
+                'message' => 'Media Plan supprimé avec succès'
+            ]);
+        }
+        return response()->json([
+            'message' => 'Erreur lors de la suppression du Media Plan'
+        ], 500);
     }
 }

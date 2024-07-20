@@ -32,24 +32,56 @@ class MediaPlan extends Model
     ];
 
     // Relations
-
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function campaign(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Campaign::class);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function announcer(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Announcer::class);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function messages(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(Message::class);
+    }
+
+    // Accessors & Mutators
+    /**
+     * @param $value
+     * @return void
+     * Définir le budget en centimes
+     */
+    public function setBudgetAttribute($value): void
+    {
+        $this->attributes['budget'] = $value * 100;
+    }
+
+    /**
+     * @param $value
+     * @return float|int
+     * Récupérer le budget en euros (float)
+     */
+    public function getBudgetAttribute($value): float|int
+    {
+        return $value / 100;
     }
 }
