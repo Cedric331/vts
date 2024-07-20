@@ -16,14 +16,11 @@ class Announcer extends Model
      */
     protected $fillable = [
         'name',
-        'logo'
+        'logo',
     ];
 
     // Relations
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
     public function mediaPlans(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(MediaPlan::class);
