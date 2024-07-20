@@ -1,9 +1,7 @@
 <?php
 
 use App\Http\Controllers\MediaPlanController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
 
 /**
  * Display a listing of the resource.

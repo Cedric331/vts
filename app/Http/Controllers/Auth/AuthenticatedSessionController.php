@@ -7,14 +7,13 @@ use App\Http\Requests\Auth\LoginRequest;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
-use JetBrains\PhpStorm\NoReturn;
 
 class AuthenticatedSessionController extends Controller
 {
     /**
      * Handle an incoming authentication request.
      */
-     public function store(LoginRequest $request)
+    public function store(LoginRequest $request)
     {
         $request->authenticate();
 
@@ -24,7 +23,7 @@ class AuthenticatedSessionController extends Controller
 
         return [
             'success' => 'Connexion OK',
-            'token' => $token->plainTextToken
+            'token' => $token->plainTextToken,
         ];
     }
 
