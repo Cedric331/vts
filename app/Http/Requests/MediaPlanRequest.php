@@ -6,7 +6,6 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class MediaPlanRequest extends FormRequest
 {
-
     /**
      * Indicates if the validator should stop on the first rule failure.
      *

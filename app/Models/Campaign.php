@@ -28,17 +28,11 @@ class Campaign extends Model
     const STATUS_INACTIVE = 3;
 
     // Relations
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
     public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
     public function mediaPlans(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(MediaPlan::class);
