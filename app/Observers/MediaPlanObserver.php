@@ -11,7 +11,7 @@ class MediaPlanObserver
      */
     public function created(MediaPlan $mediaPlan): void
     {
-        $mediaPlan->name = $mediaPlan->name . ' ' . now()->format('Y-m-d');
+        $mediaPlan->name = $mediaPlan->name.' '.now()->format('Y-m-d');
     }
 
     /**
