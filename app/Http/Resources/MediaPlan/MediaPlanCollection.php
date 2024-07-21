@@ -17,7 +17,7 @@ class MediaPlanCollection extends ResourceCollection
         return [
             'data' => $this->collection,
             'meta' => [
-                'total' => $this->collection->count(),
+                'total' => $this->collection->count()
             ],
         ];
     }

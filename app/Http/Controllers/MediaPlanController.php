@@ -10,11 +10,11 @@ use Illuminate\Support\Facades\Gate;
 
 class MediaPlanController extends Controller
 {
-    public function index(): \Illuminate\Http\JsonResponse|\Illuminate\Http\Resources\Json\AnonymousResourceCollection
+    public function index(): MediaPlanCollection
     {
         Gate::authorize('viewAny', MediaPlan::class);
 
-        return MediaPlanCollection::collection(MediaPlan::all());
+        return new MediaPlanCollection(MediaPlan::all());
     }
 
     public function store(MediaPlanRequest $request): \Illuminate\Http\Response|MediaPlanResource
