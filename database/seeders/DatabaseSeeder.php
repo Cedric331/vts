@@ -18,10 +18,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory([
-            'name' => 'John Doe',
-            'email' => 'john.doe@example.com'
+        $this->call([
+            UserSeeder::class,
         ]);
+
         User::factory(2)->create();
         Announcer::factory(2)->create();
         Campaign::factory(2)->create();

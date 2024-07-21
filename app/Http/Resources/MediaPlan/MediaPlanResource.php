@@ -30,6 +30,7 @@ class MediaPlanResource extends JsonResource
             'start_date_flexibility' => $this->start_date_flexibility,
             'end_date' => $this->end_date,
             'end_date_flexibility' => $this->end_date_flexibility,
+            'end_date_wish' => $this->end_date_wish,
             'campaign_id' => $this->campaign_id,
             'announcer_id' => $this->announcer_id,
             'created_by' => $this->created_by,
