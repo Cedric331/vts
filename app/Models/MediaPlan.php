@@ -34,26 +34,36 @@ class MediaPlan extends Model
 
     // Objective
     const OBJECTIVE_SALE = 1;
+
     const OBJECTIVE_PROSPECTING = 2;
+
     const OBJECTIVE_TRAFFIC_WEBSITE = 3;
+
     const OBJECTIVE_AWARENESS = 4;
+
     const OBJECTIVE_PROMOTION_STORE = 5;
+
     const OBJECTIVE_PROMOTION_APP = 6;
+
     const OBJECTIVE_OTHER = 7;
 
     // Periodicity
-    const PERIODICITY_PONCTUAL= 'Ponctuel';
+    const PERIODICITY_PONCTUAL = 'Ponctuel';
 
     const PERIODICITY_RECURRENT = 'Récurrent';
 
     // Date wish
     const DATE_WISH_ASAP = 1;
+
     const DATE_WISH_SPECIFIC = 2;
+
     const DATE_WISH_INCERTAIN = 3;
 
     // Date flexibility
     const DATE_FLEXIBILITY_STRICT = 1;
+
     const DATE_FLEXIBILITY_FLEXIBLE = 2;
+
     const DATE_FLEXIBILITY_VERY_FLEXIBLE = 3;
 
     // Relations
