@@ -15,8 +15,15 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): \Illuminate\Http\JsonResponse
     {
-        $request->authenticate();
+        $credentials = $request->only('email', 'password');
 
+        if (!Auth::guard('web')->attempt($credentials)) {
+            return response()->json([
+                'error' => 'Les identifiants sont incorrects.'
+            ], 401);
+        }
+
+        $request->authenticate();
         $request->session()->regenerate();
         $request->user()->tokens()->delete();
 
@@ -25,7 +32,7 @@ class AuthenticatedSessionController extends Controller
         return response()->json([
             'success' => 'Connexion OK',
             'token' => $token->plainTextToken,
-        ], 204);
+        ], 200);
     }
 
     /**

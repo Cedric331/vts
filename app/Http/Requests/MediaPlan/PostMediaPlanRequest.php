@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\MediaPlan;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class MediaPlanRequest extends FormRequest
+class PostMediaPlanRequest extends FormRequest
 {
     /**
      * Indicates if the validator should stop on the first rule failure.
@@ -41,9 +41,7 @@ class MediaPlanRequest extends FormRequest
             'end_date' => 'nullable|date',
             'end_date_flexibility' => 'nullable|integer',
             'campaign_id' => 'required|exists:campaigns,id',
-            'announcer_id' => 'required|exists:announcers,id',
-            'created_by' => 'required|exists:users,id',
-            'updated_by' => 'nullable|exists:users,id',
+            'announcer_id' => 'required|exists:announcers,id'
         ];
     }
 }

@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\MediaPlanRequest;
+use App\Http\Requests\MediaPlan\PatchMediaPlanRequest;
+use App\Http\Requests\MediaPlan\PostMediaPlanRequest;
 use App\Http\Resources\MediaPlan\MediaPlanCollection;
 use App\Http\Resources\MediaPlan\MediaPlanResource;
 use App\Models\MediaPlan;
@@ -17,11 +18,14 @@ class MediaPlanController extends Controller
         return new MediaPlanCollection(MediaPlan::all());
     }
 
-    public function store(MediaPlanRequest $request): \Illuminate\Http\Response|MediaPlanResource
+    public function store(PostMediaPlanRequest $request): \Illuminate\Http\Response|MediaPlanResource
     {
         Gate::authorize('create', MediaPlan::class);
 
         $validatedData = $request->validated();
+        $validatedData['created_by'] = auth()->id();
+
+        unset($validatedData['updated_by']);
 
         $mediaPlan = MediaPlan::create($validatedData);
 
@@ -35,11 +39,12 @@ class MediaPlanController extends Controller
         return new MediaPlanResource($mediaPlan);
     }
 
-    public function update(MediaPlanRequest $request, MediaPlan $mediaPlan): \Illuminate\Http\Response|MediaPlanResource
+    public function update(PatchMediaPlanRequest $request, MediaPlan $mediaPlan): \Illuminate\Http\Response|MediaPlanResource
     {
         Gate::authorize('update', $mediaPlan);
 
         $validatedData = $request->validated();
+        unset($validatedData['created_by'], $validatedData['updated_by']);
 
         $mediaPlan->update($validatedData);
 

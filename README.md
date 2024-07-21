@@ -7,6 +7,86 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+## Installation du projet Laravel avec Laravel Sail
+
+Clonez le dépôt Git de votre projet localement à l'aide de la commande suivante :
+
+```bash
+git clone git@github.com:Cedric331/vts.git
+```
+
+Accéder au répertoire du projet :
+
+```bash
+cd vts
+```
+Copiez le fichier .env.example en .env :
+
+```bash
+cp .env.example .env
+```
+
+Par la suite pour plus de simplicité, vous pouvez également utiliser la commande ci-dessous pour créer un alias "sail" à la place de ./vendor/bin/sail :
+
+```bash
+alias sail='sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'
+```
+
+### Installer les dépendances :
+
+Installez les dépendances du projet en utilisant Composer via Laravel Sail :
+
+```bash
+sail composer install
+```
+
+### Générer la clé de l'application :
+
+```bash
+sail artisan key:generate
+```
+
+### Configurer l'environnement :
+
+Ouvrez le fichier .env et configurez les paramètres nécessaires, notamment la connexion à la base de données.
+
+Démarrez les conteneurs Docker de Laravel Sail :
+```bash
+sail up -d
+```
+
+### Migrer la base de données :
+
+Une fois les conteneurs Docker en cours d'exécution, exécutez les migrations de base de données avec les données de test :
+
+```bash
+sail artisan migrate --seed
+```
+
+Cela créera les tables de base de données nécessaires pour votre application.
+
+#### Utilisateur test :
+
+Un utilisateur de test est créé lors de l'exécution des migrations. Vous pouvez vous connecter avec les informations suivantes :
+
+- Email : john.doe@example.com
+- Mot de passe : password
+
+### Exécuter les tests :
+
+Vous pouvez également exécuter les tests pour vous assurer que tout fonctionne correctement :
+
+```bash
+sail test
+```
+
+## Commande export
+Pour exporter les media plans, vous pouvez utiliser la commande suivante :
+
+```bash 
+sail artisan app:export-media
+```
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:

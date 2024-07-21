@@ -8,4 +8,8 @@ use Illuminate\Support\Facades\Route;
  * Préfixe de l'URI : /api
  * https://laravel.com/docs/11.x/routing
  */
-Route::apiResource('media', MediaPlanController::class)->middleware('auth:sanctum');
+Route::apiResource('media', MediaPlanController::class, [
+    'parameters' => [
+        'media' => 'mediaPlan'
+    ]
+])->middleware('auth:sanctum');
