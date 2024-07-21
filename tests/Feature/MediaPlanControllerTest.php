@@ -2,12 +2,11 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use App\Models\MediaPlan;
-use App\Models\User;
-use App\Models\Campaign;
 use App\Models\Announcer;
+use App\Models\Campaign;
+use App\Models\User;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class MediaPlanControllerTest extends TestCase
 {

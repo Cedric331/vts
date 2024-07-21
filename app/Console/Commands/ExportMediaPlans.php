@@ -35,6 +35,6 @@ class ExportMediaPlans extends Command
 
         Storage::disk('local')->put($filePath, $json);
 
-        $this->info("Le fichier avec les medias est disponible ici : storage/".$filePath);
+        $this->info('Le fichier avec les medias est disponible ici : storage/'.$filePath);
     }
 }
