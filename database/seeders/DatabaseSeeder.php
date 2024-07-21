@@ -9,7 +9,6 @@ use App\Models\Message;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Artisan;
 
 class DatabaseSeeder extends Seeder
 {
@@ -20,7 +19,7 @@ class DatabaseSeeder extends Seeder
     {
         User::factory([
             'name' => 'John Doe',
-            'email' => 'john.doe@example.com'
+            'email' => 'john.doe@example.com',
         ]);
         User::factory(2)->create();
         Announcer::factory(2)->create();
