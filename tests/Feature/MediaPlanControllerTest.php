@@ -64,7 +64,7 @@ class MediaPlanControllerTest extends TestCase
             'end_date' => '2024-12-31',
             'end_date_flexibility' => null,
             'campaign_id' => $campaign->id,
-            'announcer_id' => $announcer->id
+            'announcer_id' => $announcer->id,
         ]);
     }
 }

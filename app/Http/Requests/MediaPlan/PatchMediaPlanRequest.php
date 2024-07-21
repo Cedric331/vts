@@ -41,7 +41,7 @@ class PatchMediaPlanRequest extends FormRequest
             'end_date' => 'sometimes|nullable|date',
             'end_date_flexibility' => 'sometimes|nullable|integer',
             'campaign_id' => 'sometimes|required|exists:campaigns,id',
-            'announcer_id' => 'sometimes|required|exists:announcers,id'
+            'announcer_id' => 'sometimes|required|exists:announcers,id',
         ];
     }
 }

@@ -17,9 +17,9 @@ class AuthenticatedSessionController extends Controller
     {
         $credentials = $request->only('email', 'password');
 
-        if (!Auth::guard('web')->attempt($credentials)) {
+        if (! Auth::guard('web')->attempt($credentials)) {
             return response()->json([
-                'error' => 'Les identifiants sont incorrects.'
+                'error' => 'Les identifiants sont incorrects.',
             ], 401);
         }
 

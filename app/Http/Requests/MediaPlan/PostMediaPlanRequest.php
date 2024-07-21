@@ -41,7 +41,7 @@ class PostMediaPlanRequest extends FormRequest
             'end_date' => 'nullable|date',
             'end_date_flexibility' => 'nullable|integer',
             'campaign_id' => 'required|exists:campaigns,id',
-            'announcer_id' => 'required|exists:announcers,id'
+            'announcer_id' => 'required|exists:announcers,id',
         ];
     }
 }

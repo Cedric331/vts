@@ -10,6 +10,6 @@ use Illuminate\Support\Facades\Route;
  */
 Route::apiResource('media', MediaPlanController::class, [
     'parameters' => [
-        'media' => 'mediaPlan'
-    ]
+        'media' => 'mediaPlan',
+    ],
 ])->middleware('auth:sanctum');
