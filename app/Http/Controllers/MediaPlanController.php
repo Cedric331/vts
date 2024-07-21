@@ -12,7 +12,6 @@ class MediaPlanController extends Controller
 {
     public function index(): \Illuminate\Http\JsonResponse|\Illuminate\Http\Resources\Json\AnonymousResourceCollection
     {
-        // Policy check
         Gate::authorize('viewAny', MediaPlan::class);
 
         return MediaPlanCollection::collection(MediaPlan::all());

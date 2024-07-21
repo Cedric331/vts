@@ -18,6 +18,7 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
+        $request->user()->tokens()->delete();
 
         $token = $request->user()->createToken('API Token');
 

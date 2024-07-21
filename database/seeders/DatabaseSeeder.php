@@ -2,9 +2,14 @@
 
 namespace Database\Seeders;
 
+use App\Models\Announcer;
+use App\Models\Campaign;
+use App\Models\MediaPlan;
+use App\Models\Message;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Artisan;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,11 +18,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        User::factory([
+            'name' => 'John Doe',
+            'email' => 'john.doe@example.com'
         ]);
+        User::factory(2)->create();
+        Announcer::factory(2)->create();
+        Campaign::factory(2)->create();
+        MediaPlan::factory(2)->create();
+        Message::factory(10)->create();
     }
 }
