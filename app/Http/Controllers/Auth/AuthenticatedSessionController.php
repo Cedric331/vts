@@ -13,7 +13,7 @@ class AuthenticatedSessionController extends Controller
     /**
      * Handle an incoming authentication request.
      */
-    public function store(LoginRequest $request)
+    public function store(LoginRequest $request): \Illuminate\Http\JsonResponse
     {
         $request->authenticate();
 
@@ -22,10 +22,10 @@ class AuthenticatedSessionController extends Controller
 
         $token = $request->user()->createToken('API Token');
 
-        return [
+        return response()->json([
             'success' => 'Connexion OK',
             'token' => $token->plainTextToken,
-        ];
+        ], 204);
     }
 
     /**

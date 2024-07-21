@@ -12,6 +12,8 @@ class MediaPlanObserver
     public function created(MediaPlan $mediaPlan): void
     {
         $mediaPlan->name = $mediaPlan->name.' '.now()->format('Y-m-d');
+
+        $mediaPlan->saveQuietly();
     }
 
     /**
@@ -20,6 +22,8 @@ class MediaPlanObserver
     public function updated(MediaPlan $mediaPlan): void
     {
         $mediaPlan->updated_by = auth()->id();
+
+        $mediaPlan->saveQuietly();
     }
 
     /**

@@ -93,7 +93,7 @@ class MediaPlan extends Model
     // Accessors & Mutators
     /**
      * @return void
-     *              Définir le budget en centimes
+     * Définir le budget en centimes
      */
     public function setBudgetAttribute($value): void
     {
@@ -102,7 +102,7 @@ class MediaPlan extends Model
 
     /**
      * @return float|int
-     *                   Récupérer le budget en euros (float)
+     * Récupére le budget en euros (float)
      */
     public function getBudgetAttribute($value): float|int
     {
